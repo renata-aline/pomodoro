@@ -16,5 +16,5 @@ formAdicionaTarefa.addEventListener('submit',(evento) => {
         descricao: textarea.value
     }
     tarefas.push(tarefa)
-    localStorage.setItem('tarefas',tarefas)
+    localStorage.setItem('tarefas',JSON.stringify(tarefas))
 })
