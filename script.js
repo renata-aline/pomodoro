@@ -13,7 +13,7 @@ const iniciarOuPausarBtIcone = document.querySelector(".app__card-primary-butto-
 const tempoNaTela = document.querySelector("#timer")
 
 
-let tempoDecorridoEmSegundo = 5;
+let tempoDecorridoEmSegundo = 1500;
 let intervaloId = null;
 
 musica.loop = true;
@@ -27,21 +27,25 @@ musicaFocoInput.addEventListener("change", () => {
 });
 
 focoBt.addEventListener("click", () => {
+  tempoDecorridoEmSegundo = 1500
   alterarContexto("foco");
   focoBt.classList.add("active");
 });
 
 curtoBt.addEventListener("click", () => {
+  tempoDecorridoEmSegundo = 300
   alterarContexto("descanso-curto");
   curtoBt.classList.add("active");
 });
 
 longoBt.addEventListener("click", () => {
+  tempoDecorridoEmSegundo = 900
   alterarContexto("descanso-longo");
   longoBt.classList.add("active");
 });
 
 function alterarContexto(contexto) {
+  mostarTempo()
   button.forEach(function (contexto) {
     contexto.classList.remove("active");
   });
@@ -68,7 +72,6 @@ function alterarContexto(contexto) {
 const contagemRegressiva = () => {
   if (tempoDecorridoEmSegundo <= 0) {
     zerar();
-    alert("Tempo finalizado!");
     return;
   }
 
@@ -96,8 +99,9 @@ function zerar() {
 }
 
 function mostarTempo(){
-  const tempo = tempoDecorridoEmSegundo
-  tempoNaTela.innerHTML = `${tempo}`
+  const tempo = new Date(tempoDecorridoEmSegundo * 1000)
+  const tempoFormatado = tempo.toLocaleTimeString('pt-br',{minute:'2-digit',second:'2-digit'})
+  tempoNaTela.innerHTML = `${tempoFormatado}`
 }
 
 mostarTempo()
