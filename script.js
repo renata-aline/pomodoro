@@ -9,6 +9,7 @@ const musicaFocoInput = document.querySelector("#alternar-musica");
 const musica = new Audio("/sons/luna-rise-part-one.mp3");
 const startPauseBt = document.querySelector("#start-pause");
 const iniciarOuPausarBt = document.querySelector('#start-pause span')
+const iniciarOuPausarBtIcone = document.querySelector(".app__card-primary-butto-icon")
 
 
 let tempoDecorridoEmSegundo = 5;
@@ -82,6 +83,7 @@ function iniciarOuPausar() {
   }
   intervaloId = setInterval(contagemRegressiva, 1000);
   iniciarOuPausarBt.textContent = "Pausar"
+  iniciarOuPausarBtIcone.setAttribute('src',`/imagens/pause.png`)
 }
 
 function zerar() {
