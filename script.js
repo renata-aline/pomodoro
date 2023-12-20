@@ -14,7 +14,7 @@ const iniciarOuPausarBtIcone = document.querySelector(
 );
 const tempoNaTela = document.querySelector("#timer");
 
-let tempoDecorridoEmSegundo = 1500;
+let tempoDecorridoEmSegundo = 5;
 let intervaloId = null;
 
 musica.loop = true;
